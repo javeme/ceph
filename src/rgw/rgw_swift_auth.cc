@@ -591,7 +591,7 @@ void RGW_SWIFT_Auth_Get::execute()
     goto done;
 
   {
-    static constexpr std::size_t PREFIX_SIZE = strlen("AUTH_rgwtk");
+    static constexpr size_t PREFIX_SIZE = strlen("AUTH_rgwtk");
     char token_val[PREFIX_SIZE + bl.length() * 2 + 1];
 
     snprintf(token_val, PREFIX_SIZE, "AUTH_rgwtk");

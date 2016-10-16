@@ -38,6 +38,3 @@
 	url = https://github.com/ceph/lua.git
 	branch = lua-5.3-ceph
 	ignore = dirty
-[submodule "src/boost"]
-	path = src/boost
-	url = https://github.com/boostorg/boost.git

@@ -119,7 +119,6 @@ Package: ceph-mds
 Architecture: linux-any
 Depends: ceph-base (= ${binary:Version}),
          ${misc:Depends},
-         ${python:Depends},
          ${shlibs:Depends}
 Recommends: ceph-fuse (= ${binary:Version}),
             libcephfs1 (= ${binary:Version})
@@ -609,7 +608,6 @@ Depends: ceph-common (= ${binary:Version}),
          mime-support,
          librgw2 (= ${binary:Version}),
          ${misc:Depends},
-         ${python:Depends},
          ${shlibs:Depends}
 Recommends: ntp | time-daemon
 Description: REST gateway for RADOS distributed object store

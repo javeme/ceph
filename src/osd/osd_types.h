@@ -2298,7 +2298,7 @@ struct pg_fast_info_t {
   }
 
   bool try_apply_to(pg_info_t* info) {
-    if (last_update > info->last_update)
+    if (last_update <= info->last_update)
       return false;
     info->last_update = last_update;
     info->last_complete = last_complete;

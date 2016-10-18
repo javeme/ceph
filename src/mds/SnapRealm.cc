@@ -283,7 +283,7 @@ void SnapRealm::build_snap_trace(bufferlist& snapbl)
 
 
 
-void SnapRealm::prune_deleted_snaps()
+void SnapRealm::prune_deleted_snaps(snapid_t removed, snapid_t removed_v)
 {
   const auto& data_pools = mdcache->mds->mdsmap->get_data_pools();
   set<snapid_t> to_purge;
@@ -322,6 +322,11 @@ void SnapRealm::prune_deleted_snaps()
     srnode.last_destroyed = last_destroyed;
   } else {
     assert(to_purge.empty());
+  }
+  if (removed) {
+    assert(removed_v > srnode.last_destroyed);
+    srnode.snaps.erase(removed);
+    // don't set last_destroyed because we might have missed others
   }
 }
 

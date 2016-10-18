@@ -8299,7 +8299,7 @@ void Server::_rmsnap_finish(MDRequestRef& mdr, CInode *diri, snapid_t snapid)
   snapid_t stid = mdr->more()->stid;
   bufferlist::iterator p = mdr->more()->snapidbl.begin();
   snapid_t seq;
-  ::decode(seq, p);  
+  ::decode(seq, p);
 
   diri->pop_and_dirty_projected_inode(mdr->ls);
   mdr->apply();
@@ -8308,7 +8308,7 @@ void Server::_rmsnap_finish(MDRequestRef& mdr, CInode *diri, snapid_t snapid)
 
   dout(10) << "snaprealm now " << *diri->snaprealm << dendl;
 
-  mdcache->do_realm_invalidate_and_update_notify(diri, CEPH_SNAP_OP_DESTROY);
+  mdcache->do_realm_invalidate_and_update_notify(diri, CEPH_SNAP_OP_DESTROY, snapid, seq);
 
   // yay
   mdr->in[0] = diri;
